@@ -1,9 +1,4 @@
 ### c4me
-NOTE:
-
-James (Me - kinda a dummy), has been committing from my windows partition instead of my Ubuntu.
-However, GRUB has been messing with my timeslot, so I've been committing in GMT.
-
 
 **How to Install**
 
