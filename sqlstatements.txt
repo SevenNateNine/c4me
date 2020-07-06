@@ -1,0 +1,98 @@
+CREATE DATABASE c4me;
+
+USE c4me;
+
+SELECT DATABASE();
+
+***THE ABOVE COMMAND SHOULD VERIFY YOU ARE USING c4me***
+
+To fix the common authentication issue:
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '{NewPassword}';
+
+CREATE TABLE User (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    type ENUM ('Student', 'Admin') NOT NULL
+);
+
+CREATE TABLE Admin (
+    id INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY(id) REFERENCES User(id)
+);
+
+CREATE TABLE HighSchool (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    state CHAR(2),
+    ap_enroll DOUBLE,
+    sat_score INT,
+    act_score INT,
+    college_prep_rank INT,
+    us_rank INT,
+    stem_rank INT,
+    interested_schools VARCHAR(255)
+);
+
+CREATE TABLE Student (
+    id INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY(id) REFERENCES User(id),
+    hs_id INT,
+    FOREIGN KEY(hs_id) REFERENCES HighSchool(id),
+    average_mark VARCHAR(30),
+    financial_status VARCHAR(30),
+    major1 VARCHAR(30),
+    major2 VARCHAR(30),
+    grad_year INT,
+    sat_math INT,
+    sat_ebrw INT,
+    act_eng INT,
+    act_math INT,
+    act_reading INT,
+    act_science INT,
+    act_comp INT,
+    sat_lit INT,
+    sat_us INT, 
+    sat_mathI INT,
+    sat_mathII INT,
+    sat_eco INT,
+    sat_mol INT,
+    sat_chem INT,
+    sat_phy INT,
+    numAPs INT,
+    gpa FLOAT
+);
+
+CREATE TABLE School (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    state CHAR(2),
+    region ENUM ('Northeast', 'Midwest', 'South', 'West'),
+    admission_rate DOUBLE,
+    cost DOUBLE,
+    ranking INT,
+    size INT,
+    act_composite INT,
+    sat_math INT,
+    sat_ebrw INT,
+    act_range_low INT,
+    act_range_high INT,
+    sat_math_range_low INT,
+    sat_math_range_high INT,
+    sat_ebrw_range_low INT,
+    sat_ebrw_range_high INT,
+    avg_accepted_gpa FLOAT
+);
+
+CREATE TABLE Majors (
+    school_id INT,
+    major VARCHAR(30),
+    PRIMARY KEY(school_id, major),
+    FOREIGN KEY(school_id) REFERENCES School(id)
+);
+

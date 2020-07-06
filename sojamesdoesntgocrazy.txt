@@ -1,0 +1,13 @@
+insert into Applications (student_id, college_id, questionable, status) values (5, 95, true, 'Waitlisted');
+insert into Applications (student_id, college_id, questionable, status) values (3, 91, true, 'Accepted');
+insert into Applications (student_id, college_id, questionable, status) values (7, 89, true, 'Waitlisted');
+insert into Applications (student_id, college_id, questionable, status) values (3, 71, true, 'Accepted');
+insert into Applications (student_id, college_id, questionable, status) values (7, 18, true, 'Waitlisted');
+insert into Applications (student_id, college_id, questionable, status) values (5, 91, true, 'Waitlisted');
+insert into Applications (student_id, college_id, questionable, status) values (8, 84, true, 'Pending');
+insert into Applications (student_id, college_id, questionable, status) values (4, 96, true, 'Waitlisted');
+insert into Applications (student_id, college_id, questionable, status) values (10, 62, true, 'Rejected');
+insert into Applications (student_id, college_id, questionable, status) values (3, 68, true, 'Waitlisted');
+insert into Applications (student_id, college_id, questionable, status) values (7, 35, true, 'Waitlisted');
+insert into Applications (student_id, college_id, questionable, status) values (6, 77, true, 'Rejected');
+insert into Applications (student_id, college_id, questionable, status) values (3, 17, true, 'Rejected');

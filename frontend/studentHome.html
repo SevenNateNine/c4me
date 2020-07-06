@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+This is the student home page
+Also the Search Similar High Schools
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Similar High Schools | c4me | Teenage Mutant FullStack Turtles</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="Pictures/Icons/studentIcon.png"/>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <style>
+      #nav-sim-prof:hover {
+        color: black;
+      }
+
+      @font-face {
+          font-family: poppin;
+          src: url(fonts/poppins/Poppins-Regular.ttf);
+      }
+    </style>
+</head>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" style="background-color: #ffe5e5 !important">
+    <img src="peng.png" width="40" height="40" alt="logo"> &nbsp <a class="navbar-brand" href="studentHome.html">c4me</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <form class="mx-2 my-auto d-inline w-100" ><div class="input-group" style=""><span class="input-group-append">
+            <input type="text" style="width: 400px" class="form-control border border-right-0" placeholder="Search...">
+            <button class="btn btn-outline-dark border border-left-0" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+        </span></div></form>
+        <ul class="navbar-nav w-100">
+            <li class="nav-item dropdown ml-auto">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="joey.jpg" width="40" height="40" class="rounded-circle"> &nbsp Hello <span style="color:red">Joseph</span> <!-- CHANGE NAME HERE BASED ON WHOSE LOGGED IN -->
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="profile.html">View Profile</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body style= "padding-top: 100px; font-family: poppin; background-color: #ffe5e5" }>
+
+<div style="margin-left: 3%">
+    <table>
+        <tr> <!-- COLUMN FOR THE SIDE NAV BAR -->
+            <th style="width: 20%">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active">Find Similar High Schools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-style: normal; font-weight: lighter;" id = "nav-sim-prof" href="similarProfiles.html">Similar Profiles</a>
+                    </li>
+            </ul>
+          </th>
+            <th style=" width: 100%; padding-right: 5%"> <!-- COLUMN FOR THE INFORMATION ON THE RIGHT -->
+                <div style="background-color: rgba(255, 255, 255, .7) !important;" class="jumbotron">
+                    <a href="#" class="visible-xs" data-toggle="offcanvas"><i class="fa fa-lg fa-reorder"></i></a>
+                    <h1>Find Similar High Schools</h1>
+                    <p style="color:red; margin-left: 3%">Put Information here about what this does.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h3>Popular High Schools Searched...</h3>
+                        <p style="color:red; margin-left: 5%">put list here of schools searched?? </p>
+                        <p><a class="btn btn-default" href="#">View more »</a></p>
+                    </div>
+                    <!--/span-->
+                    <div class="col-6 col-sm-6 col-lg-6">
+                        <h3>Search for a High School Here...</h3>
+
+                            <form class="mx-2 my-auto d-inline w-100" >
+                                <div class="input-group" style="margin-left: 5%;margin-top: -2%; ">
+
+                                <input type="text" style="width: 50%" class="form-control border border-right-0" placeholder="Start typing here...">
+                                <button class="btn btn-outline-dark border border-left-0" type="button">
+                                <i class="fa fa-search"></i>
+                                </button>
+
+                                </div></form>
+
+                        <p style="color:red"> need to make the search bar here and the nav bar work / autocomplete </p>
+                    </div>
+                </div>
+
+            </th>
+
+        </tr>
+
+
+
+    </table>
+
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+</div>
+</body>
+</html>
