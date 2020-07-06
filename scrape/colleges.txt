@@ -1,0 +1,101 @@
+Amherst College
+Barnard College
+Bates College
+Boston College
+Boston University
+Bowdoin College
+Brown University
+Bryn Mawr College
+Bucknell University
+California Institute of Technology
+Carleton College
+Carnegie Mellon University
+Case Western Reserve University
+Claremont McKenna College
+Colgate University
+Columbia University
+Cornell University
+Dartmouth College
+Davidson College
+Dickinson College
+Drexel University
+Duke University
+Emory University
+Franklin & Marshall College
+George Washington University
+Georgetown University
+Georgia Institute of Technology
+Grinnell College
+Hamilton College
+Harvard University
+Haverford College
+Johns Hopkins University
+Kenyon College
+Lafayette College
+Lehigh University
+Loyola Marymount University
+Macalester College
+Massachusetts Institute of Technology
+Michigan State University
+Middlebury College
+Mount Holyoke College
+New York University
+Northeastern University
+Northwestern University
+Oberlin College
+Occidental College
+Ohio State University (Main campus)
+Pitzer College
+Pomona College
+Princeton University
+Purdue University West Lafayette
+Reed College
+Rice University
+Santa Clara University
+Scripps College
+Skidmore College
+Smith College
+Southern Methodist University
+Stanford University
+Stony Brook University
+Swarthmore College
+Texas A&M University-College Station
+Trinity College
+Tufts University
+Tulane University
+United States Naval Academy
+University of California, Berkeley
+University of California, Davis
+University of California, Irvine
+University of California, Los Angeles
+University of California, San Diego
+University of California, Santa Barbara
+University of Chicago
+University of Florida
+University of Illinois at Chicago
+University of Illinois at Urbana-Champaign
+University of Maryland, College Park
+University of Miami
+University of Michigan-Ann Arbor
+University of Minnesota Twin Cities
+University of North Carolina at Chapel Hill
+University of Notre Dame
+University of Pennsylvania
+University of Pittsburgh-Pittsburgh campus
+University of Richmond
+University of Rochester
+University of Southern California
+University of Texas at Austin
+University of Virginia (Main campus)
+University of Washington-Seattle
+University of Wisconsin-Madison
+Vanderbilt University
+Vassar College
+Wake Forest University
+Washington University in St Louis
+Washington and Lee University
+Wellesley College
+Wesleyan University
+William & Mary
+Williams College
+Yale University

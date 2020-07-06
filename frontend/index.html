@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<!--
+This is the login page
+This page contains a text field for username and another for password
+This page redirects to the Home page depending on if you are logging in as a student or administrator
+-->
+
+<html lang="en">
+<head>
+    <title>Login | c4me | Teenage Mutant FullStack Turtles </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="Pictures/Icons/home.ico"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+<body >
+
+<div class="container-login100" style="background-color: #ffe5e5;"> <!-- style = "background: url('Pictures/SkyBlue.jpeg') no-repeat center center fixed; background-size: cover;"-->
+    <div class="wrap-login100">
+        <div class="login100-form-title" style="background-image: url('Pictures/studying.gif')">
+			<span  style="font-size: 40px; color: white; font-weight: bold;">
+				c4me
+			</span>
+            <div style="font-size: 20px; color: white;">Please Login</div>
+        </div>
+
+        <form class="login100-form validate-form" style="margin-bottom: -9%">
+            <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                <span class="label-input100">Username</span>
+                <input class="input100" type="text" name="username" placeholder="Enter username">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+                <span class="label-input100">Password</span>
+                <input class="input100" type="password" name="pass" placeholder="Enter password">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="flex-sb-m w-full p-b-30">
+                <div class="contact100-form-checkbox">
+                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                    <label class="label-checkbox100" for="ckb1">
+                        Remember me
+                    </label>
+                </div>
+
+                <!-- <div>
+                    <a href="#" class="txt1">
+                        Forgot Username?
+                    </a>-->
+                <div>
+                    <a href="#" class="txt1">
+                        Forgot Password?
+                    </a>
+                </div>
+
+            </div>
+
+            <div>
+                <button class="login100-form-btn" style ="background-color: #cceeff; border-radius: 15px; border-color: #cceeff; color: black">
+                    Login
+                </button>
+            </div><br><br>
+            <div style="margin-top: 5%"> Need an account? Register <a style="cursor: pointer; color: #4da6ff; font-size: 12pt" href="register.html">here!</a></div>
+        </form>
+    </div>
+</div>
+</div>
+<script src="JS/jquery-3.2.1.min.js"></script>
+<script src="JS/main.js"></script>
+</body>
+</html>

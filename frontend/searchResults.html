@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!--
+This is the Search Results for Students
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results | c4me | Teenage Mutant FullStack Turtles</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="Pictures/Icons/studentIcon.png"/>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
+    <style>
+
+        @font-face {
+            font-family: poppin;
+            src: url(fonts/poppins/Poppins-Regular.ttf);
+        }
+
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+
+        $(document).ready(function() {
+            $('.mdb-select').materialSelect();
+        });
+
+
+        //to disable features on the table
+      /*  $(function () {
+            $('#dataTable').DataTable({
+                "pageLength": 3,
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        }); */
+    </script>
+</head>
+<!-- TODO : NEED TO GET FILTERS WORKING AND CHANGE THAT UGLY BUTTON FOR CALCULATE ALSO NEEDA CONNECT THIS PAGE TO THE SEARCH BAR ON THE TOP :)-->
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" style="background-color: #ffe5e5 !important">
+    <img src="peng.png" width="40" height="40" alt="logo"> &nbsp <a class="navbar-brand" href="studentHome.html">c4me</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <form class="mx-2 my-auto d-inline w-100" ><div class="input-group" style=""><span class="input-group-append">
+            <input type="text" style="width: 400px" class="form-control border border-right-0" placeholder="Search...">
+            <button class="btn btn-outline-dark border border-left-0" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+        </span></div></form>
+        <ul class="navbar-nav w-100">
+            <li class="nav-item dropdown ml-auto">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="joey.jpg" width="40" height="40" class="rounded-circle"> &nbsp Hello <span style="color:red">Joseph</span> <!-- CHANGE NAME HERE BASED ON WHOSE LOGGED IN -->
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="profile.html">View Profile</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body style= "padding-top: 100px; font-family: poppin; background-color: #ffe5e5" }>
+
+<div style="margin-left: 1.5%">
+    <table>
+        <tr style="padding-bottom: 20%"> <!-- COLUMN FOR THE SIDE NAV BAR -->
+            <!-- TODO: work on functionality of the filters -->
+            <th style="width: 20%">
+                <div class="cd-filter">
+                    <form>
+                        <div class="card">
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">Admission Rate </h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Min</label>
+                                                <input type="number" class="form-control" id="inputEmail4" placeholder="0%" min = 0 max = 100>
+                                            </div>
+                                            <div class="form-group col-md-6 text-right">
+                                                <label>Max</label>
+                                                <input type="number" class="form-control" placeholder="100%" max = 100 min = 1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">Tuition </h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Min</label>
+                                                <input type="number" class="form-control" placeholder="$0" min = 0 max = 99999>
+                                            </div>
+                                            <div class="form-group col-md-6 text-right">
+                                                <label>Max</label>
+                                                <input type="number" class="form-control" placeholder="$99999" min = 1 max = 99999>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- TODO: LOcation and Major, I want to do a multiselect / search drop down menu. Still tryna figure out how to do -->
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">Location</h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <select class="selectpicker" data-live-search="true">
+                                                <option value="" disabled selected>Region</option>
+                                                <option data-tokens="ketchup mustard">Option 1</option>
+                                                <option data-tokens="mustard">Option 2</option>
+                                                <option data-tokens="frosting">Option 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">Major</h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <select class="mdb-select md-form">
+                                                <option value="" disabled selected>Major</option>
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">Size</h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="custom-control custom-checkbox">
+                                            <span class="float-right badge badge-light round">-1</span>
+                                            <input type="checkbox" class="custom-control-input" id="Check1">
+                                            <label class="custom-control-label" for="Check1">Small</label>
+                                        </div>
+
+                                        <div class="custom-control custom-checkbox">
+                                            <span class="float-right badge badge-light round">-1</span>
+                                            <input type="checkbox" class="custom-control-input" id="Check2">
+                                            <label class="custom-control-label" for="Check2">Medium</label>
+                                        </div>
+
+                                        <div class="custom-control custom-checkbox">
+                                            <span class="float-right badge badge-light round">-1</span>
+                                            <input type="checkbox" class="custom-control-input" id="Check3">
+                                            <label class="custom-control-label" for="Check3">Large</label>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">Ranking </h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Min</label>
+                                                <input type="number" class="form-control" placeholder="Lower Bound" min = 0>
+                                            </div>
+                                            <div class="form-group col-md-6 text-right">
+                                                <label>Max</label>
+                                                <input type="number" class="form-control" placeholder="Upper Bound" min = 1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">SAT Math</h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Min</label>
+                                                <input type="number" class="form-control" placeholder="0" min = 0 max = 800>
+                                            </div>
+                                            <div class="form-group col-md-6 text-right">
+                                                <label>Max</label>
+                                                <input type="number" class="form-control" placeholder="800" min = 1 max = 800>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">SAT EBRW</h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Min</label>
+                                                <input type="number" class="form-control" placeholder="0" min = 0 max = 800>
+                                            </div>
+                                            <div class="form-group col-md-6 text-right">
+                                                <label>Max</label>
+                                                <input type="number" class="form-control" placeholder="800" min = 1 max = 800>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="card-group-item">
+                                <header class="card-header">
+                                    <h6 class="title">ACT</h6>
+                                </header>
+                                <div class="filter-content">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Min</label>
+                                                <input type="number" class="form-control" placeholder="0" min = 0 max = 36>
+                                            </div>
+                                            <div class="form-group col-md-6 text-right">
+                                                <label>Max</label>
+                                                <input type="number" class="form-control" placeholder="800" min = 1 max = 36>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </form>
+                </div>
+            </th>
+            <th style=" width: 100%; padding-right: 2.5%; vertical-align: top" >
+                <div class="container">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="background-color: white">
+                        <thead>
+                        <tr style="text-align: center">
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Admission Rate</th>
+                            <th>Completion Rate</th>
+                            <th>Cost of Attendance</th>
+                            <th>Average Student Debt</th>
+                            <th>Ranking</th>
+                            <th>Size</th>
+                            <th >Score</th>
+                            <th>Plot</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <!-- get data from table -->
+                        <tr>
+                            <td class = "school_name" href="#" style="cursor: pointer">Stony Brook University</td> <!-- user can click on the name and it leads to an example profile -->
+                            <td>Public</td>
+                            <td>50</td>
+                            <td>75%</td>
+                            <td>10000</td>
+                            <td>20000</td>
+                            <td>34</td>
+                            <td>Large</td>
+                            <td><button>Calculate</button></td>
+                            <td><button><a href="scatterPlot.html" style="text-decoration: none">Plot</a></button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </th>
+
+        </tr>
+
+    </table>
+
+
+</div>
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "columnDefs": [
+                { "orderable": false, "targets": -1},
+                { "orderable": false, "targets": -2},
+            ]
+        });
+
+    });
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+userid,password,residence_state,high_school_name,high_school_city,high_school_state,GPA,college_class,major_1,major_2,SAT_math,SAT_EBRW,ACT_English,ACT_math,ACT_reading,ACT_science,ACT_composite,SAT_literature,SAT_US_hist,SAT_world_hist,SAT_math_I,SAT_math_II,SAT_eco_bio,SAT_mol_bio,SAT_chemistry,SAT_physics,num_AP_passed
+40_NY_0,40_NY_0!,NY,Commack High School,Commack,NY,4.0,2024,Physics,History,710.0,720.0,30,29,29,30,30,720.0,720.0,720.0,710.0,730.0,720.0,730.0,710.0,730.0,5
+40_NY_1,40_NY_1!,NY,Commack High School,Commack,NY,4.0,2024,Physics,History,630.0,610.0,27,27,29,28,28,730.0,710.0,730.0,730.0,710.0,710.0,730.0,730.0,730.0,7
+40_NY_2,40_NY_2!,NY,Commack High School,Commack,NY,4.0,2025,Physics,Philosophy,630.0,630.0,27,29,29,28,28,720.0,710.0,710.0,730.0,730.0,720.0,720.0,710.0,710.0,7
+40_NY_3,40_NY_3!,NY,Commack High School,Commack,NY,3.8,2025,Physics,Philosophy,610.0,610.0,29,29,29,28,29,730.0,720.0,720.0,710.0,730.0,730.0,710.0,730.0,730.0,5
+40_IL_40,40_IL_40!,IL,Crystal Lake Central High School,Crystal Lake,IL,4.0,2024,Physics,Philosophy,610.0,620.0,29,27,28,27,28,730.0,720.0,720.0,710.0,730.0,710.0,720.0,710.0,730.0,7
+40_IL_41,40_IL_41!,IL,Crystal Lake Central High School,Crystal Lake,IL,4.0,2025,Physics,English,610.0,610.0,29,27,28,29,28,730.0,710.0,730.0,730.0,730.0,720.0,710.0,720.0,710.0,7
+40_IL_42,40_IL_42!,IL,Crystal Lake Central High School,Crystal Lake,IL,4.0,2025,Physics,Philosophy,620.0,610.0,29,27,28,29,28,730.0,710.0,730.0,730.0,720.0,720.0,730.0,720.0,710.0,7
+40_IL_43,40_IL_43!,IL,Crystal Lake Central High School,Crystal Lake,IL,4.0,2024,Physics,History,630.0,610.0,29,28,28,28,28,730.0,730.0,720.0,720.0,710.0,720.0,720.0,710.0,710.0,5
+40_KS_80,40_KS_80!,KS,Lawrence Free State High School,Lawrence,KS,4.0,2024,Physics,History,630.0,630.0,27,27,29,27,28,710.0,720.0,710.0,730.0,720.0,720.0,730.0,710.0,710.0,5
+40_KS_81,40_KS_81!,KS,Lawrence Free State High School,Lawrence,KS,3.9,2024,Physics,English,630.0,620.0,29,27,29,28,28,710.0,720.0,720.0,710.0,720.0,710.0,710.0,710.0,710.0,5
+40_KS_82,40_KS_82!,KS,Lawrence Free State High School,Lawrence,KS,4.0,2025,Physics,Philosophy,610.0,620.0,27,28,29,28,28,720.0,710.0,710.0,710.0,720.0,730.0,720.0,720.0,730.0,5
+40_KS_83,40_KS_83!,KS,Lawrence Free State High School,Lawrence,KS,4.0,2025,Physics,Philosophy,630.0,610.0,28,27,28,27,28,710.0,730.0,730.0,730.0,730.0,730.0,720.0,730.0,710.0,6
+40_NC_120,40_NC_120!,NC,Providence High School,Charlotte,NC,4.0,2025,Physics,English,630.0,610.0,28,29,29,28,28,720.0,720.0,730.0,720.0,730.0,720.0,720.0,710.0,710.0,7
+40_NC_121,40_NC_121!,NC,Providence High School,Charlotte,NC,4.0,2024,Physics,History,610.0,630.0,28,28,29,29,28,720.0,710.0,710.0,730.0,730.0,710.0,710.0,710.0,720.0,6
+40_NC_122,40_NC_122!,NC,Providence High School,Charlotte,NC,4.0,2024,Physics,Psychology,610.0,610.0,28,28,28,29,28,710.0,710.0,730.0,730.0,730.0,730.0,710.0,710.0,730.0,7
+40_NC_123,40_NC_123!,NC,Providence High School,Charlotte,NC,4.0,2025,Physics,English,620.0,630.0,28,27,29,29,28,730.0,730.0,720.0,710.0,720.0,720.0,710.0,730.0,720.0,6
+40_NY_160,40_NY_160!,NY,South Side High School,Rockville Centre,NY,4.0,2025,Physics,Psychology,610.0,620.0,29,27,29,28,28,730.0,730.0,710.0,720.0,730.0,720.0,710.0,710.0,720.0,6
+40_NY_161,40_NY_161!,NY,South Side High School,Rockville Centre,NY,4.0,2024,Physics,English,610.0,610.0,29,27,28,27,28,710.0,720.0,720.0,720.0,730.0,710.0,710.0,730.0,720.0,7
+40_NY_162,40_NY_162!,NY,South Side High School,Rockville Centre,NY,4.0,2024,Physics,History,630.0,610.0,27,29,29,28,28,720.0,730.0,730.0,730.0,710.0,720.0,720.0,730.0,720.0,7
+40_NY_163,40_NY_163!,NY,South Side High School,Rockville Centre,NY,3.9,2025,Physics,History,620.0,620.0,28,27,29,28,28,710.0,720.0,730.0,710.0,720.0,710.0,710.0,720.0,730.0,5
+37_GA_0,37_GA_0!,GA,Flowery Branch High School,Flowery Branch,GA,3.8000000000000003,2024,Mathematics,History,580.0,580.0,24,26,26,25,25,700.0,700.0,700.0,690.0,700.0,680.0,700.0,700.0,700.0,5
+37_GA_1,37_GA_1!,GA,Flowery Branch High School,Flowery Branch,GA,3.7,2025,Mathematics,Psychology,590.0,580.0,24,25,25,24,24,690.0,680.0,680.0,700.0,690.0,690.0,690.0,700.0,690.0,6
+37_GA_2,37_GA_2!,GA,Flowery Branch High School,Flowery Branch,GA,3.7,2025,Mathematics,Philosophy,600.0,600.0,26,24,25,25,25,700.0,700.0,680.0,680.0,680.0,680.0,680.0,680.0,680.0,5
+37_GA_3,37_GA_3!,GA,Flowery Branch High School,Flowery Branch,GA,3.6,2024,Mathematics,Psychology,590.0,590.0,25,25,26,25,25,690.0,680.0,700.0,690.0,680.0,680.0,700.0,680.0,690.0,6
+37_SC_40,37_SC_40!,SC,Ashley Ridge High School,Summerville,SC,3.8000000000000003,2025,Mathematics,English,580.0,600.0,24,26,24,24,24,700.0,690.0,680.0,700.0,680.0,700.0,690.0,690.0,700.0,6
+37_SC_41,37_SC_41!,SC,Ashley Ridge High School,Summerville,SC,3.5,2025,Mathematics,Philosophy,590.0,580.0,26,26,25,25,26,690.0,690.0,690.0,700.0,680.0,690.0,700.0,700.0,690.0,4
+37_SC_42,37_SC_42!,SC,Ashley Ridge High School,Summerville,SC,3.9000000000000004,2025,Mathematics,English,580.0,600.0,25,26,25,24,25,690.0,690.0,700.0,680.0,680.0,690.0,700.0,690.0,680.0,4
+37_SC_43,37_SC_43!,SC,Ashley Ridge High School,Summerville,SC,3.8000000000000003,2025,Mathematics,History,600.0,600.0,25,26,25,26,26,680.0,700.0,690.0,700.0,680.0,700.0,690.0,680.0,690.0,5
+37_NM_80,37_NM_80!,NM,Volcano vista High School,Albuquerque,NM,3.7,2024,Mathematics,History,580.0,580.0,24,24,25,25,24,700.0,700.0,680.0,700.0,700.0,690.0,690.0,680.0,700.0,6
+37_NM_81,37_NM_81!,NM,Volcano vista High School,Albuquerque,NM,3.8000000000000003,2024,Mathematics,English,590.0,590.0,26,26,24,25,25,690.0,690.0,700.0,700.0,700.0,700.0,680.0,690.0,700.0,6
+37_NM_82,37_NM_82!,NM,Volcano vista High School,Albuquerque,NM,3.6,2024,Mathematics,English,590.0,580.0,25,26,24,26,25,700.0,680.0,680.0,690.0,700.0,690.0,690.0,690.0,690.0,4
+37_NM_83,37_NM_83!,NM,Volcano vista High School,Albuquerque,NM,3.5,2024,Mathematics,Philosophy,590.0,600.0,26,25,26,26,26,690.0,690.0,690.0,700.0,680.0,680.0,700.0,690.0,680.0,5
+37_NY_120,37_NY_120!,NY,Island Trees High School,Levittown,NY,3.5,2024,Mathematics,Philosophy,590.0,600.0,26,26,26,25,26,680.0,690.0,680.0,690.0,700.0,690.0,680.0,700.0,700.0,4
+37_NY_121,37_NY_121!,NY,Island Trees High School,Levittown,NY,3.9000000000000004,2025,Mathematics,History,580.0,580.0,24,26,25,25,25,690.0,700.0,700.0,680.0,690.0,690.0,700.0,700.0,690.0,6
+37_NY_122,37_NY_122!,NY,Island Trees High School,Levittown,NY,3.8000000000000003,2025,Mathematics,Psychology,590.0,600.0,26,25,24,26,25,700.0,680.0,690.0,680.0,690.0,700.0,700.0,700.0,690.0,6
+37_NY_123,37_NY_123!,NY,Island Trees High School,Levittown,NY,3.8000000000000003,2024,Mathematics,Psychology,590.0,580.0,24,25,24,25,24,700.0,680.0,690.0,700.0,700.0,700.0,690.0,680.0,680.0,5
+37_TX_160,37_TX_160!,TX,Fairfield High School,Fairfield,TX,3.7,2024,Mathematics,Psychology,580.0,600.0,24,24,24,24,24,700.0,690.0,680.0,690.0,680.0,680.0,700.0,690.0,680.0,6
+37_TX_161,37_TX_161!,TX,Fairfield High School,Fairfield,TX,3.9000000000000004,2025,Mathematics,History,580.0,600.0,24,25,26,25,25,690.0,700.0,700.0,690.0,680.0,700.0,680.0,700.0,690.0,5
+37_TX_162,37_TX_162!,TX,Fairfield High School,Fairfield,TX,3.9000000000000004,2024,Mathematics,Psychology,580.0,580.0,26,24,24,25,25,680.0,690.0,680.0,690.0,690.0,680.0,680.0,700.0,700.0,6
+37_TX_163,37_TX_163!,TX,Fairfield High School,Fairfield,TX,3.6,2024,Mathematics,Philosophy,580.0,600.0,25,24,26,25,25,680.0,700.0,680.0,700.0,700.0,680.0,680.0,690.0,680.0,4
+33_TX_0,33_TX_0!,TX,Richland High School,North Richland Hills,TX,3.1999999999999997,2024,Chemistry,History,580.0,570.0,24,25,26,25,25,680.0,690.0,690.0,670.0,670.0,670.0,690.0,690.0,670.0,4
+33_TX_1,33_TX_1!,TX,Richland High School,North Richland Hills,TX,3.5,2025,Chemistry,History,580.0,580.0,24,26,26,25,25,680.0,680.0,690.0,680.0,690.0,680.0,670.0,670.0,690.0,3
+33_TX_2,33_TX_2!,TX,Richland High School,North Richland Hills,TX,3.4,2024,Chemistry,Philosophy,570.0,590.0,24,24,25,25,24,680.0,680.0,680.0,670.0,670.0,680.0,690.0,690.0,670.0,5
+33_TX_3,33_TX_3!,TX,Richland High School,North Richland Hills,TX,3.4,2025,Chemistry,English,590.0,570.0,26,26,25,25,26,690.0,680.0,690.0,680.0,690.0,690.0,670.0,690.0,690.0,4
+33_WA_40,33_WA_40!,WA,Columbia River High School,Vancouver,WA,3.4,2024,Chemistry,Philosophy,570.0,570.0,26,24,25,24,25,680.0,690.0,680.0,690.0,670.0,680.0,670.0,690.0,690.0,4
+33_WA_41,33_WA_41!,WA,Columbia River High School,Vancouver,WA,3.0999999999999996,2025,Chemistry,English,590.0,590.0,24,25,24,26,25,670.0,680.0,670.0,690.0,670.0,690.0,680.0,680.0,690.0,5
+33_WA_42,33_WA_42!,WA,Columbia River High School,Vancouver,WA,3.3,2024,Chemistry,Philosophy,590.0,590.0,25,26,26,26,26,670.0,680.0,690.0,690.0,680.0,670.0,680.0,680.0,690.0,5
+33_WA_43,33_WA_43!,WA,Columbia River High School,Vancouver,WA,3.1999999999999997,2024,Chemistry,Philosophy,570.0,580.0,26,26,24,26,26,670.0,690.0,680.0,670.0,690.0,670.0,690.0,690.0,690.0,5
+33_MO_80,33_MO_80!,MO,Bayless Senior High School,St Louis,MO,3.4,2025,Chemistry,Philosophy,580.0,570.0,25,24,24,26,25,690.0,680.0,690.0,690.0,680.0,680.0,670.0,670.0,670.0,5
+33_MO_81,33_MO_81!,MO,Bayless Senior High School,St Louis,MO,3.5,2024,Chemistry,Psychology,590.0,570.0,24,26,24,26,25,690.0,680.0,690.0,690.0,680.0,670.0,690.0,680.0,670.0,3
+33_MO_82,33_MO_82!,MO,Bayless Senior High School,St Louis,MO,3.1999999999999997,2025,Chemistry,Psychology,570.0,580.0,25,26,24,26,25,690.0,680.0,690.0,690.0,680.0,690.0,670.0,680.0,690.0,4
+33_MO_83,33_MO_83!,MO,Bayless Senior High School,St Louis,MO,3.5,2024,Chemistry,Philosophy,580.0,570.0,25,26,25,26,26,690.0,670.0,670.0,680.0,680.0,690.0,680.0,670.0,680.0,5
+33_MA_120,33_MA_120!,MA,Sutton High School,Sutton,MA,3.4,2024,Chemistry,Philosophy,570.0,580.0,25,26,24,24,25,680.0,670.0,680.0,670.0,680.0,680.0,680.0,670.0,680.0,5
+33_MA_121,33_MA_121!,MA,Sutton High School,Sutton,MA,3.0999999999999996,2024,Chemistry,History,590.0,590.0,24,24,24,26,24,680.0,690.0,690.0,680.0,670.0,690.0,690.0,680.0,690.0,5
+33_MA_122,33_MA_122!,MA,Sutton High School,Sutton,MA,3.4,2024,Chemistry,History,570.0,580.0,26,24,25,24,25,670.0,690.0,690.0,680.0,670.0,670.0,690.0,680.0,680.0,3
+33_MA_123,33_MA_123!,MA,Sutton High School,Sutton,MA,3.3,2025,Chemistry,History,590.0,590.0,25,25,24,26,25,690.0,670.0,680.0,670.0,680.0,670.0,680.0,670.0,680.0,5
+33_NH_160,33_NH_160!,NH,Goffstown High School,Goffstown,NH,3.0999999999999996,2025,Chemistry,History,590.0,570.0,26,24,26,26,26,690.0,670.0,670.0,680.0,690.0,670.0,670.0,680.0,690.0,3
+33_NH_161,33_NH_161!,NH,Goffstown High School,Goffstown,NH,3.4,2025,Chemistry,History,570.0,570.0,26,26,25,25,26,680.0,690.0,690.0,680.0,690.0,670.0,680.0,670.0,690.0,3
+33_NH_162,33_NH_162!,NH,Goffstown High School,Goffstown,NH,3.3,2024,Chemistry,History,580.0,590.0,26,24,25,24,25,680.0,670.0,670.0,680.0,690.0,670.0,670.0,690.0,670.0,4
+33_NH_163,33_NH_163!,NH,Goffstown High School,Goffstown,NH,3.3,2024,Chemistry,History,580.0,580.0,25,26,26,25,26,670.0,690.0,680.0,690.0,670.0,680.0,680.0,690.0,690.0,4
+30_OH_0,30_OH_0!,OH,Arcadia High School,Arcadia,OH,3.1,2025,Biology,Psychology,550.0,550.0,24,23,22,23,23,650.0,640.0,650.0,640.0,650.0,650.0,640.0,640.0,650.0,2
+30_OH_1,30_OH_1!,OH,Arcadia High School,Arcadia,OH,2.6,2025,Biology,History,540.0,540.0,21,23,24,23,23,640.0,660.0,640.0,640.0,650.0,640.0,660.0,650.0,640.0,2
+30_OH_2,30_OH_2!,OH,Arcadia High School,Arcadia,OH,3.2,2024,Biology,Philosophy,550.0,540.0,23,24,22,22,23,660.0,650.0,650.0,640.0,640.0,650.0,650.0,640.0,650.0,4
+30_OH_3,30_OH_3!,OH,Arcadia High School,Arcadia,OH,3.2,2025,Biology,English,560.0,540.0,23,22,22,24,23,660.0,640.0,650.0,660.0,660.0,640.0,650.0,660.0,660.0,2
+30_SC_40,30_SC_40!,SC,South Pointe High School,Rock Hill,SC,2.8,2025,Biology,History,550.0,550.0,24,24,22,24,24,650.0,640.0,660.0,650.0,650.0,660.0,660.0,660.0,640.0,3
+30_SC_41,30_SC_41!,SC,South Pointe High School,Rock Hill,SC,3.2,2024,Biology,English,540.0,560.0,22,23,24,24,23,640.0,650.0,650.0,640.0,660.0,660.0,640.0,650.0,660.0,3
+30_SC_42,30_SC_42!,SC,South Pointe High School,Rock Hill,SC,3.2,2025,Biology,English,540.0,540.0,24,22,23,23,23,650.0,640.0,660.0,650.0,650.0,660.0,660.0,640.0,650.0,3
+30_SC_43,30_SC_43!,SC,South Pointe High School,Rock Hill,SC,3.2,2025,Biology,History,560.0,560.0,22,22,22,24,22,660.0,660.0,650.0,640.0,640.0,640.0,650.0,650.0,660.0,4
+30_MI_80,30_MI_80!,MI,Otsego High School,Otsego,MI,2.8,2025,Biology,History,560.0,550.0,24,24,23,23,24,640.0,650.0,660.0,650.0,640.0,640.0,650.0,640.0,650.0,2
+30_MI_81,30_MI_81!,MI,Otsego High School,Otsego,MI,3.2,2024,Biology,Philosophy,540.0,550.0,22,22,23,22,22,660.0,650.0,650.0,660.0,660.0,640.0,640.0,640.0,640.0,3
+30_MI_82,30_MI_82!,MI,Otsego High School,Otsego,MI,2.9,2024,Biology,Psychology,540.0,540.0,23,22,23,23,23,650.0,660.0,660.0,650.0,650.0,650.0,640.0,640.0,640.0,3
+30_MI_83,30_MI_83!,MI,Otsego High School,Otsego,MI,2.8,2024,Biology,English,550.0,540.0,24,22,23,24,23,640.0,650.0,640.0,640.0,660.0,650.0,640.0,650.0,650.0,2
+30_NJ_120,30_NJ_120!,NJ,Sterling High School,Somerdale,NJ,3.1,2025,Biology,English,560.0,540.0,22,22,23,23,22,650.0,640.0,640.0,660.0,640.0,640.0,650.0,660.0,660.0,2
+30_NJ_121,30_NJ_121!,NJ,Sterling High School,Somerdale,NJ,3.0,2025,Biology,Psychology,550.0,540.0,24,24,24,22,24,660.0,660.0,640.0,660.0,660.0,660.0,660.0,640.0,650.0,3
+30_NJ_122,30_NJ_122!,NJ,Sterling High School,Somerdale,NJ,3.0,2024,Biology,English,540.0,560.0,22,24,24,24,24,650.0,650.0,660.0,650.0,660.0,650.0,650.0,640.0,660.0,2
+30_NJ_123,30_NJ_123!,NJ,Sterling High School,Somerdale,NJ,2.9,2025,Biology,Psychology,540.0,560.0,24,22,23,23,23,650.0,640.0,640.0,640.0,660.0,650.0,660.0,640.0,650.0,3
+30_CT_160,30_CT_160!,CT,Parish hill High School,Chaplin,CT,3.1,2024,Biology,Psychology,560.0,550.0,22,24,24,22,23,660.0,650.0,650.0,640.0,660.0,640.0,650.0,640.0,650.0,2
+30_CT_161,30_CT_161!,CT,Parish hill High School,Chaplin,CT,3.2,2024,Biology,History,540.0,550.0,22,24,23,22,23,660.0,650.0,660.0,650.0,640.0,640.0,650.0,640.0,650.0,3
+30_CT_162,30_CT_162!,CT,Parish hill High School,Chaplin,CT,3.1,2024,Biology,Philosophy,560.0,560.0,22,24,24,23,23,660.0,650.0,660.0,650.0,660.0,640.0,660.0,660.0,640.0,4
+30_CT_163,30_CT_163!,CT,Parish hill High School,Chaplin,CT,3.1,2024,Biology,Philosophy,540.0,540.0,24,24,24,22,24,650.0,660.0,650.0,660.0,650.0,650.0,650.0,650.0,660.0,3
+27_AZ_0,27_AZ_0!,AZ,Glendale High School,Glendale,AZ,2.8000000000000003,2025,Economics,Philosophy,490.0,490.0,23,23,21,23,22,610.0,590.0,590.0,600.0,610.0,610.0,590.0,610.0,600.0,3
+27_AZ_1,27_AZ_1!,AZ,Glendale High School,Glendale,AZ,2.8000000000000003,2025,Economics,Psychology,490.0,490.0,21,23,21,23,22,590.0,610.0,600.0,610.0,610.0,600.0,610.0,600.0,600.0,1
+27_AZ_2,27_AZ_2!,AZ,Glendale High School,Glendale,AZ,2.6,2025,Economics,History,510.0,500.0,23,22,21,22,22,600.0,610.0,600.0,600.0,610.0,590.0,600.0,590.0,600.0,3
+27_AZ_3,27_AZ_3!,AZ,Glendale High School,Glendale,AZ,2.8000000000000003,2025,Economics,Psychology,490.0,500.0,21,21,23,21,22,610.0,610.0,610.0,590.0,590.0,610.0,610.0,610.0,610.0,3
+27_MI_40,27_MI_40!,MI,Lake City High School,Lake City,MI,2.8000000000000003,2025,Economics,Psychology,490.0,510.0,22,23,23,22,22,610.0,600.0,610.0,590.0,590.0,610.0,610.0,600.0,590.0,2
+27_MI_41,27_MI_41!,MI,Lake City High School,Lake City,MI,2.6,2025,Economics,Philosophy,490.0,510.0,21,21,21,22,21,610.0,600.0,590.0,590.0,600.0,600.0,590.0,610.0,600.0,1
+27_MI_42,27_MI_42!,MI,Lake City High School,Lake City,MI,2.8000000000000003,2025,Economics,Psychology,510.0,490.0,21,23,23,22,22,600.0,600.0,610.0,600.0,610.0,590.0,600.0,600.0,610.0,2
+27_MI_43,27_MI_43!,MI,Lake City High School,Lake City,MI,2.5,2024,Economics,English,500.0,510.0,21,23,23,21,22,590.0,590.0,610.0,590.0,590.0,590.0,600.0,610.0,590.0,3
+27_TX_80,27_TX_80!,TX,Elsik High School,Houston,TX,2.5,2025,Economics,Psychology,510.0,490.0,23,23,22,23,23,600.0,610.0,590.0,610.0,590.0,610.0,600.0,600.0,610.0,3
+27_TX_81,27_TX_81!,TX,Elsik High School,Houston,TX,2.7,2024,Economics,History,490.0,500.0,21,23,22,21,22,590.0,590.0,600.0,600.0,610.0,590.0,590.0,610.0,610.0,2
+27_TX_82,27_TX_82!,TX,Elsik High School,Houston,TX,2.8000000000000003,2024,Economics,Psychology,510.0,490.0,21,22,23,22,22,600.0,600.0,600.0,590.0,610.0,590.0,600.0,590.0,610.0,3
+27_TX_83,27_TX_83!,TX,Elsik High School,Houston,TX,2.9000000000000004,2024,Economics,Philosophy,500.0,500.0,22,21,23,22,22,590.0,590.0,590.0,610.0,600.0,600.0,610.0,590.0,610.0,3
+27_CA_120,27_CA_120!,CA,Blair High School,Pasadena,CA,2.6,2025,Economics,English,500.0,500.0,22,22,23,21,22,590.0,610.0,600.0,600.0,600.0,590.0,590.0,610.0,610.0,3
+27_CA_121,27_CA_121!,CA,Blair High School,Pasadena,CA,2.8000000000000003,2024,Economics,History,500.0,490.0,22,21,21,22,22,610.0,600.0,600.0,610.0,600.0,610.0,590.0,600.0,600.0,2
+27_CA_122,27_CA_122!,CA,Blair High School,Pasadena,CA,2.6,2025,Economics,Psychology,490.0,490.0,23,23,21,21,22,590.0,610.0,610.0,610.0,590.0,590.0,610.0,610.0,590.0,2
+27_CA_123,27_CA_123!,CA,Blair High School,Pasadena,CA,2.6,2025,Economics,Philosophy,490.0,510.0,23,21,23,23,22,590.0,600.0,610.0,590.0,590.0,610.0,600.0,610.0,590.0,3
+27_FL_160,27_FL_160!,FL,Cedar Key High School,Cedar Key,FL,2.6,2025,Economics,English,500.0,510.0,23,22,23,21,22,590.0,590.0,610.0,600.0,600.0,590.0,590.0,600.0,590.0,2
+27_FL_161,27_FL_161!,FL,Cedar Key High School,Cedar Key,FL,2.6,2025,Economics,Philosophy,510.0,500.0,23,23,21,21,22,600.0,610.0,600.0,610.0,590.0,600.0,600.0,590.0,610.0,1
+27_FL_162,27_FL_162!,FL,Cedar Key High School,Cedar Key,FL,2.9000000000000004,2025,Economics,Philosophy,500.0,510.0,22,21,21,22,22,590.0,610.0,600.0,600.0,610.0,610.0,610.0,600.0,600.0,3
+27_FL_163,27_FL_163!,FL,Cedar Key High School,Cedar Key,FL,2.6,2024,Economics,English,510.0,510.0,22,22,22,23,22,590.0,590.0,590.0,590.0,610.0,600.0,610.0,600.0,590.0,1

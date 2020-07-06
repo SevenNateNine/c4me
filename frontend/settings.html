@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>c4me</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
+
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+            <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+            <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+    		<!-- Compiled and minified CSS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+            
+            <!--Material Icons-->
+            <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    		<!-- Compiled and minified JavaScript -->
+    		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+	    <style>
+        /* Taken from codemyui https://codemyui.com/comicbook-inspired-hand-drawn-borders/ */ 
+
+        @import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);      
+               .box{
+                  margin:25px;
+                  background:#fff;
+                  border: solid black;
+                  border-color: black;
+                  float:left; 
+                  width:50vw;
+                  min-height: 70vh;
+                  margin-top:5vw;
+                }
+
+                .box1{
+                  border-width: 4px 5px 4px 6px;
+                  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+                  transform: rotate(2deg);
+                  font-family: 'Montserrat';
+                }
+                .box2{
+                  width:350px;
+                  border-width: 3px 3px 5px 5px;
+                  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+                  transform: rotate(-2deg);
+                }
+
+                .box3{
+                  border-width: 5px 3px 3px 5px;
+                  border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
+                  transform: rotate(2deg);
+                }
+
+                .oddboxinner{
+                  margin:15px;
+                  transform: rotate(-2deg);
+                }
+                .evenboxinner{
+                  transform: rotate(2deg);
+                  margin:15px;
+                  padding:0 5px;
+                  float:right;
+                  background:#ddd;
+                  border:1px solid #222;
+                  box-shadow:3px 3px 0 #222;
+                }
+               /*End Taken*/
+                html {
+                    scroll-behavior: smooth;
+                }
+
+                .grid-container {
+                    display: grid;
+                    grid-template-columns: auto auto auto;
+                    font-family: 'Montserrat';
+                    margin: 0 auto;
+                }
+                .logo{
+                    overflow: hidden;
+                    width:15vw;
+                    padding-left:5vw;
+                }
+                .navsearch {
+                  width:60vw;
+                  padding-left:3vw;
+                }
+                .prof{
+                    width:17vw;
+                    padding-left:5vw;
+                }
+                .backnav{
+                    background-color: #182440;
+                }
+                
+                .contentbox{
+                    width:50vw;
+                    min-height: 70vh;
+                    margin-top:5vw;
+                    border:3px solid black;
+                }
+                .content{
+                    padding-left:3vw;
+                    padding-right: 3vw;
+                }
+                .setbox{
+                    width:20vw;
+                    min-height:70vh;
+                    margin-top:5vw;
+                    padding-left:5vw;
+                    text-align:center;
+                }
+
+                .set-container{
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    margin: 0 auto;
+                }
+            </style>
+    </head>
+
+    <body>
+        <nav class = "backnav">
+            <div class="nav-wrapper">
+            <div class="grid-container">
+            <div class="logo">
+              <a href="#" class="brand-logo"><img src="peng.png" width="10%" height="10%"> c4me</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+              </div>
+
+              <div class="navsearch">
+                <div class=" input-field">
+                    <i class=" material-icons prefix">search</i>
+                    <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete "/ >
+                </div>
+                </div>
+
+                <div class="prof">
+                    <div class="dropdown show">
+                        <img src="placeholder.png" width="20%" height="20%">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hello, Joseph
+                        </a>
+                      
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <a class="dropdown-item" href="#">My Profile</a>
+                          <a class="dropdown-item" href="#">Settings</a>
+                          <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                      </div>
+                </div>
+              
+            </div>
+            </div>
+          </nav>
+          <div class="set-container">
+            <div class="setbox">
+                <img src="placeholder.png">
+                <h4>Joseph Spivack</h4>
+                @joeyspivack
+                <br><br>
+                <a class="waves-effect waves-light btn-large">Edit Profile</a>
+                <br><br>
+                Joined Feb 2020
+
+                <div class="switch">
+                    <label>
+                        Dark Mode
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    </label>
+                </div>
+            </div>
+              <div class="box box1">
+                <div class="oddboxinner"> 
+                    <h3>What's changed, Joseph?</h3>
+                    <h4>Personal Information</h4>
+                    <div class="row">
+                        <form class="col s12">
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input placeholder="Joseph Spivack" id="first_name" type="text" class="validate">
+                              <label for="first_name">Name</label>
+                            </div>
+                          </div>
+                        <div class="row">
+                          <div class="input-field col s6">
+                            <input disabled value="joeyspivack" id="disabled" type="text" class="validate">
+                            <label for="disabled">Username</label>
+                          </div>
+                        </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="email" type="email" class="validate">
+                              <label for="email">Email</label>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    <h4>General Information</h4>
+                </div>
+            </div>
+          </div>
+    </div>
+    </body>
+</html>
