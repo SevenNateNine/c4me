@@ -1,0 +1,156 @@
+@font-face {
+    font-family: poppin;
+    src: url(../fonts/poppins/Poppins-Regular.ttf);
+}
+body{
+    color: #fff;
+    background: #ffe5e5;
+    font-family: poppin;
+}
+.box {
+    display: flex;
+    align-items:center;
+    margin-top: .5%;
+    color: black;
+}
+.buff{
+    margin-top:10vh;
+}
+
+th{
+    text-align: center;
+}
+.box .intro {
+    width: 100%;
+    text-align: right;
+    padding-right: 5px;
+    color: black;
+    cursor: default;
+    font-size: 15pt;
+}
+
+.panel{
+    background-color: rgba(255, 255, 255, .7);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.panel .panel-heading {
+    font-size: 20pt;
+    color:black;
+}
+
+.panel .panel-body {
+
+    color: black;
+}
+
+ul {
+    list-style-type:none;
+
+}
+
+li {
+    margin: 2% 0;
+    font-size: 15pt;
+}
+
+/* Style the form - display items horizontally */
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+/* Style the submit button */
+.form-inline button {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+}
+
+.form-inline button:hover {
+    background-color: royalblue;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+@media (max-width: 800px) {
+    .form-inline input {
+        margin: 10px 0;
+    }
+
+    .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+
+#choosefile input {
+    vertical-align: center;
+
+}
+
+
+
+.submitButton {
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+
+
+.delete {
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+}
+.delete:hover {
+    background-position: right center;
+}
+
+.back {
+    background-image: linear-gradient(to right, #0a5500 0%, #059700 51%, #0a5500 100%);
+    color:white;
+    font-weight: bold;
+}
+.back:hover {
+    background-position: right center;
+}
+
+.submitButtonDelete {
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+}
+
+.submitButtonDelete:hover {
+
+    background-position: right center;
+}
+.review{
+    padding-top:10vh;
+}
+.submitButton:hover {
+
+    background-position: right center;
+}
+
+.btn {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 7pt;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: black;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}

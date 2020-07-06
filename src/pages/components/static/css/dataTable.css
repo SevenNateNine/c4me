@@ -1,0 +1,61 @@
+tbody + thead{
+    display: none;
+  }
+
+  table{
+  color: black;
+
+  }
+
+.custom-select{
+      margin-bottom: 5%;
+      width: 20%;
+    
+     vertical-align: center;
+      
+  }
+
+label{
+  color: black;
+  text-align: left;
+}
+
+.dataTables_length > label > select{
+  vertical-align: top;
+}
+
+.dataTables_length>label>select{
+  
+}
+
+thead{
+  font-size: 14pt;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: #ffbebe;
+  color: white;
+}
+
+.sorting{
+  cursor: pointer
+}
+
+tbody{
+  color: rgb(66, 66, 66);
+}
+
+.css-1hwfws3 {
+    background-color: transparent;
+    height: 38pt;
+}
+
+.css-bg1rzq-control{
+    background-color: red;
+}
+.css-kj6f9i-menu{
+   text-align: left
+}
+
+.dataTables_info{
+ text-align: left;
+}
