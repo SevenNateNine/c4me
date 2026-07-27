@@ -2,8 +2,19 @@ const puppeteer=require('puppeteer');
 
 async function scrape(keyword){
   const browser = await puppeteer.launch({headless: true}); //debugging purposes - shouldn't be false in practice
+  // Wrapped so a failed navigation or a page that does not match the expected
+  // selectors still closes the browser. Without this every error leaks a Chrome
+  // process, and the scrape routes are reachable by any admin request.
+  try {
+    return await scrapePage(browser, keyword);
+  } finally {
+    await browser.close();
+  }
+}
+
+async function scrapePage(browser, keyword){
   const page = await browser.newPage();
-  url="http://allv22.all.cs.stonybrook.edu/~stoller/cse416/niche/"+keyword+"/academics/";
+  const url = "http://allv22.all.cs.stonybrook.edu/~stoller/cse416/niche/"+encodeURIComponent(keyword)+"/academics/";
 
   await page.goto(url,{
     waitLoad: true,
@@ -77,7 +88,6 @@ async function scrape(keyword){
       }
       return r;
   });
-  await browser.close(); //comment this back in when fully working or your resources will be drained
   return data;
 }
 

@@ -1,20 +1,24 @@
-let joi = require('@hapi/joi');
-let mysql = require('mysql');
-let user = require('./user.js');
+let joi = require('joi');
+let path = require('path');
+let fs = require('fs');
 let bcrypt = require('bcrypt');
+let user = require('./user.js');
+
+const MEDIA_DIR = path.join(__dirname, 'media', 'profiles');
+
 const studentUpdateSchema = joi.object({
   //user stuff
   user_name: joi.string().max(50).token().allow(null),
   first_name: joi.string().max(50).token().allow(null),
   last_name: joi.string().max(50).token().allow(null),
   email: joi.string().max(255).email().allow(null),
-  pass: joi.string().max(255).pattern(/^[^' ]*/).allow(null),
-  old_pass: joi.string().max(255).pattern(/^[^' ]*/).allow(null),
-  hs_name: joi.string().max(255).pattern(/^[^']*/).allow(null),
+  pass: joi.string().min(8).max(50).pattern(/^[^' ]+$/).allow(null),
+  old_pass: joi.string().max(50).allow(null),
+  hs_name: joi.string().max(255).allow(null),
   financial_status: joi.number().integer().allow(null), // this needs more but I don't know what it's meant to repressent
-  major1: joi.string().max(255).pattern(/^[^']*/).allow(null),
-  major2: joi.string().max(255).pattern(/^[^']*/).allow(null),
-  grad_year: joi.number().integer().min(2000).allow(null),
+  major1: joi.string().max(255).allow(null),
+  major2: joi.string().max(255).allow(null),
+  grad_year: joi.number().integer().min(2000).max(2100).allow(null),
   sat_math: joi.number().integer().min(200).max(800).allow(null),
   sat_ebrw: joi.number().integer().min(200).max(800).allow(null),
   act_eng: joi.number().integer().min(1).max(36).allow(null),
@@ -30,145 +34,228 @@ const studentUpdateSchema = joi.object({
   sat_mol: joi.number().integer().min(200).max(800).allow(null),
   sat_chem: joi.number().integer().min(200).max(800).allow(null),
   sat_phy: joi.number().integer().min(200).max(800).allow(null),
-  numAPs: joi.number().integer().min(0).allow(null),
-  gpa : joi.number().min(0).max(4).allow(null)
+  numAPs: joi.number().integer().min(0).max(50).allow(null),
+  gpa: joi.number().min(0).max(4).allow(null)
 });
 
-exports.getProfile = (con, req, res) => {  
-  if (joi.number().integer().validate(req.query.id).error) {
-    return {satus: 400, value: {}};
+// Student columns that map straight through to a bound parameter.
+const STUDENT_NUMERIC_FIELDS = [
+  'financial_status', 'grad_year', 'sat_math', 'sat_ebrw', 'act_eng', 'act_math',
+  'act_reading', 'act_science', 'act_comp', 'sat_lit', 'sat_us', 'sat_mathI',
+  'sat_mathII', 'sat_eco', 'sat_mol', 'sat_chem', 'sat_phy', 'numAPs', 'gpa'
+];
+
+// Changing any of these is an identity change: it is how an attacker holding a
+// stolen token converts temporary access into permanent ownership of the
+// account. Each one requires the current password.
+const REAUTH_FIELDS = ['pass', 'email', 'user_name'];
+
+const profileQuery = `SELECT User.user_name, User.first_name, User.last_name, User.email,
+  Student.*, HighSchool.name as hs_name
+  FROM User, Student LEFT JOIN HighSchool ON Student.hs_id = HighSchool.id
+  WHERE Student.id = User.id AND User.id = ?`;
+
+exports.getProfile = (con, req, res) => {
+  const {error} = joi.number().integer().positive().required().validate(req.query.id);
+  if (error) {
+    // The original returned a plain object here instead of answering the
+    // request, so a bad id left the connection hanging until it timed out.
+    res.sendStatus(400);
+    return;
   }
-  console.log(`student request id: ${req.query.id}`);
-  const query =mysql.format('SELECT User.user_name, User.first_name, User.last_name, User.email, Student.*, HighSchool.name as hs_name FROM User, Student LEFT JOIN HighSchool ON Student.hs_id = HighSchool.id WHERE Student.id = User.id AND User.id = ?',[req.query.id]);
-  con(query, (err, rows) =>{
+  con(profileQuery, [req.query.id], (err, rows) => {
     if (err) {
-      res.status(400).send(err);
-    } else {
-      res.status(200).send(rows);
+      console.error('getProfile failed:', err.code);
+      res.sendStatus(500);
+      return;
     }
+    res.status(200).send(rows);
   });
 }
 
 exports.getMyProfile = (con, req, res, id) => {
-  console.log(`student request id: ${id}`);
-  const query =mysql.format('SELECT User.user_name, User.first_name, User.last_name, User.email, Student.*, HighSchool.name as hs_name FROM User, Student LEFT JOIN HighSchool ON Student.hs_id = HighSchool.id WHERE Student.id = User.id AND User.id = ?',[id]);
-  con(query, (err, rows) =>{
+  con(profileQuery, [id], (err, rows) => {
     if (err) {
-      res.status(400).send(err);
-    } else {
-      res.status(200).send(rows);
+      console.error('getMyProfile failed:', err.code);
+      res.sendStatus(500);
+      return;
     }
+    res.status(200).send(rows);
   });
 }
 
-function passwordHelper(con, id, res, pass, func) {
-  if (!pass) {
-    func();
-  } else {
-    con(`SELECT * FROM User WHERE id = ${mysql.escape(id)}`, (error, rows) => {
-      if (error || !rows[0]) {
-        res.status(401).send(error);
-        return;
-      }
-      console.log(rows[0].password);
-      bcrypt.compare(pass, rows[0].password, (err, result) => {
-        if (!err && result){
-          func();
-        } else { 
-          res.sendStatus(401);
-          return;
-        }
-      });
-    });
-  }
+// True when the request would actually change an identity field. The edit form
+// reloads the profile and posts every field back on each save, so testing
+// merely for presence would demand the password on an unrelated GPA edit.
+// Only a real change to the stored value counts.
+function changesIdentity(body, current) {
+  if (body.pass != null) return true;
+  if (body.user_name != null && body.user_name !== current.user_name) return true;
+  if (body.email != null && body.email !== current.email) return true;
+  return false;
 }
 
 exports.editProfile = (con, req, res, id) => {
-  
-  if (joi.number().integer().validate(id).error) {
+  if (joi.number().integer().positive().validate(id).error) {
     res.sendStatus(400);
     return;
   }
-  const {error, value} = studentUpdateSchema.validate(req.body);
+  const {error} = studentUpdateSchema.validate(req.body);
   if (error) {
-    res.status(400).send(error);
+    res.status(400).send({error: 'invalid profile fields'});
     return;
   }
 
-  passwordHelper(con, id, res, req.body.old_pass, () => {
-    var hs_name = req.body.hs_name ? req.body.hs_name.replace(/_/g,' ') : null;
-    var major1 = req.body.major1 ? req.body.major1.replace(/_/g,' ') : null;
-    var major2 = req.body.major2 ? req.body.major2.replace(/_/g,' ') : null;
+  con('SELECT user_name, email, password FROM User WHERE id = ?', [id], (dbErr, rows) => {
+    if (dbErr || !rows || !rows[0]) {
+      console.error('editProfile user lookup failed:', dbErr && dbErr.code);
+      res.sendStatus(500);
+      return;
+    }
+    const current = rows[0];
 
-    let query = `UPDATE Student S, User U SET`
-    if (req.body.user_name) query += ` U.user_name = ${mysql.escape(req.body.user_name)},`
-    if (req.body.first_name)  query += ` U.first_name = ${mysql.escape(req.body.first_name)},`
-    if (req.body.last_name)  query += ` U.last_name = ${mysql.escape(req.body.last_name)},`
-    if (req.body.email)  query += ` U.email = ${mysql.escape(req.body.email)},`
-    if (req.body.pass)  query += ` U.password = ${mysql.escape(user.passwordHashSync(req.body.pass))},`
-    if (req.body.hs_name)  query += ` S.hs_id = (SELECT id FROM HighSchool Where Name = ${mysql.escape(hs_name)} LIMIT 1),`
-    if (req.body.financial_status)  query += ` S.financial_status = ${req.body.financial_status},`
-    if (req.body.major1)  query += ` S.major1 = ${mysql.escape(major1)},`
-    if (req.body.major2)  query += ` S.major2 = ${mysql.escape(major2)},`
-    if (req.body.grad_year)  query += ` S.grad_year = ${req.body.grad_year},`
-    if (req.body.sat_math)  query += ` S.sat_math = ${req.body.sat_math},`
-    if (req.body.sat_ebrw)  query += ` S.sat_ebrw = ${req.body.sat_ebrw},`
-    if (req.body.act_eng)  query += ` S.act_eng = ${req.body.act_eng},`
-    if (req.body.act_math)  query += ` S.act_math = ${req.body.act_math},`
-    if (req.body.act_reading)  query += ` S.act_reading = ${req.body.act_reading},`
-    if (req.body.act_science)  query += ` S.act_science = ${req.body.act_science},`
-    if (req.body.act_comp)  query += ` S.act_comp = ${req.body.act_comp},`
-    if (req.body.sat_lit)  query += ` S.sat_lit = ${req.body.sat_lit},`
-    if (req.body.sat_us) query += ` S.sat_us = ${req.body.sat_us},`
-    if (req.body.sat_mathI)  query += ` S.sat_mathI = ${req.body.sat_mathI},`
-    if (req.body.sat_mathII)  query += ` S.sat_mathII = ${req.body.sat_mathII},`
-    if (req.body.sat_eco)  query += ` S.sat_eco = ${req.body.sat_eco},`
-    if (req.body.sat_mol)  query += ` S.sat_mol = ${req.body.sat_mol},`
-    if (req.body.sat_chem)  query += ` S.sat_chem = ${req.body.sat_chem},`
-    if (req.body.sat_phy)  query += ` S.sat_phy = ${req.body.sat_phy},`
-    if (req.body.numAPs)  query += ` S.numAPs = ${req.body.numAPs},`
-    if (req.body.gpa)  query += ` S.gpa = ${req.body.gpa},`
+    if (!changesIdentity(req.body, current)) {
+      applyProfileUpdate(con, req, res, id);
+      return;
+    }
 
-    query = query.substring(0, query.length - 1);
-    query += ` WHERE U.id = ${id} AND S.id = ${id}`;
-    console.log(query);
-    con(query, (err, data) => {
+    // The original passed old_pass to a helper that called straight through to
+    // the update whenever old_pass was absent, so a password change never
+    // actually required knowing the old one — a stolen token was enough to take
+    // the account permanently.
+    if (!req.body.old_pass) {
+      res.status(401).send({error: `current password required to change ${REAUTH_FIELDS.join(', ')}`});
+      return;
+    }
+    bcrypt.compare(req.body.old_pass, current.password, (compareErr, ok) => {
+      if (compareErr || ok !== true) {
+        res.sendStatus(401);
+        return;
+      }
+      applyProfileUpdate(con, req, res, id);
+    });
+  });
+}
+
+function applyProfileUpdate(con, req, res, id) {
+  const sets = [];
+  const values = [];
+
+  const addSet = (fragment, value) => {
+    sets.push(fragment);
+    values.push(value);
+  };
+
+  if (req.body.user_name != null) addSet('U.user_name = ?', req.body.user_name);
+  if (req.body.first_name != null) addSet('U.first_name = ?', req.body.first_name);
+  if (req.body.last_name != null) addSet('U.last_name = ?', req.body.last_name);
+  if (req.body.email != null) addSet('U.email = ?', req.body.email);
+  if (req.body.hs_name != null) {
+    addSet('S.hs_id = (SELECT id FROM HighSchool WHERE Name = ? LIMIT 1)', req.body.hs_name.replace(/_/g, ' '));
+  }
+  if (req.body.major1 != null) addSet('S.major1 = ?', req.body.major1.replace(/_/g, ' '));
+  if (req.body.major2 != null) addSet('S.major2 = ?', req.body.major2.replace(/_/g, ' '));
+  for (const field of STUDENT_NUMERIC_FIELDS) {
+    if (req.body[field] != null) addSet(`S.${field} = ?`, req.body[field]);
+  }
+
+  const finish = () => {
+    if (sets.length === 0) {
+      // With no fields set the original trimmed a trailing character off
+      // "UPDATE Student S, User U SET" and sent the fragment to MySQL.
+      res.status(400).send({error: 'no fields to update'});
+      return;
+    }
+    const query = `UPDATE Student S, User U SET ${sets.join(', ')} WHERE U.id = ? AND S.id = ?`;
+    con(query, values.concat([id, id]), (err) => {
       if (err) {
-        console.log(err);
+        console.error('editProfile failed:', err.code);
         res.sendStatus(400);
         return;
       }
-      console.log(`student updated at id ${id}`);
+      res.sendStatus(200);
+    });
+  };
+
+  if (req.body.pass != null) {
+    // Hashing asynchronously: bcrypt at cost 12 blocks for a few hundred
+    // milliseconds, and the sync variant stalls every other request meanwhile.
+    user.passwordHash(req.body.pass, (err, hashed) => {
+      if (err) {
+        console.error('password hash failed:', err.message);
+        res.sendStatus(500);
+        return;
+      }
+      addSet('U.password = ?', hashed);
+      finish();
+    });
+    return;
+  }
+  finish();
+}
+
+const ALLOWED_IMAGE_TYPES = {
+  'image/jpeg': true,
+  'image/png': true
+};
+
+exports.setProfileImage = (req, res, id) => {
+  if (joi.number().integer().positive().validate(id).error) {
+    res.sendStatus(400);
+    return;
+  }
+  if (!req.files || Object.keys(req.files).length === 0) {
+    res.sendStatus(400);
+    return;
+  }
+  // express-fileupload exposes uploads keyed by field name, not as an array, so
+  // req.files[0] was always undefined and .mv() on it threw.
+  const file = req.files[Object.keys(req.files)[0]];
+  if (!file || Array.isArray(file)) {
+    res.sendStatus(400);
+    return;
+  }
+  if (!ALLOWED_IMAGE_TYPES[file.mimetype]) {
+    res.status(415).send({error: 'profile image must be image/jpeg or image/png'});
+    return;
+  }
+
+  // The filename comes from the authenticated user's id, never from the
+  // uploaded file's own name, so an upload cannot choose where it lands.
+  const target = path.join(MEDIA_DIR, `profile${id}.jpg`);
+  fs.mkdir(MEDIA_DIR, {recursive: true}, (mkdirErr) => {
+    if (mkdirErr) {
+      console.error('cannot create media directory:', mkdirErr.message);
+      res.sendStatus(500);
+      return;
+    }
+    file.mv(target, (err) => {
+      if (err) {
+        console.error('profile image write failed:', err.message);
+        res.sendStatus(500);
+        return;
+      }
       res.sendStatus(200);
     });
   });
 }
 
-exports.setProfileImage = (req, res, id) => {
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.sendStatus(400);
-  } else {
-    let file = req.files[0];
-    file.mv(`./media/profiles/profile${id}.jpg`, (err) => {
-      if (err) {
-        return res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    });
-  }
-}
-
 exports.getProfileImage = (req, res) => {
-  const {err, value} = joi.number().integer().positive().validate(req.query.id);
-  if (err) {
+  // Destructured as {err, value} originally. Joi returns {error, value}, so
+  // `err` was always undefined, the check never fired, and req.query.id went
+  // unvalidated into the path below.
+  const {error} = joi.number().integer().positive().required().validate(req.query.id);
+  if (error) {
     res.sendStatus(400);
+    return;
   }
-  res.sendFile(`./media/profiles/profile${req.query.id}.jpg`, (error) => {
-    if (error) {
-      res.sendStatus(500);
+  // Absolute path built from an integer. sendFile rejects relative paths
+  // anyway, and path.join on an unvalidated id is how "../" escapes the
+  // directory.
+  const target = path.join(MEDIA_DIR, `profile${parseInt(req.query.id, 10)}.jpg`);
+  res.sendFile(target, (sendErr) => {
+    if (sendErr && !res.headersSent) {
+      res.sendStatus(404);
     }
   });
 }
-
-

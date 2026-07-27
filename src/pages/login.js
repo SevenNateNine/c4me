@@ -47,7 +47,10 @@ class Login extends Component{
       const cookies = new Cookies();
       if (res.data.success) {
         //give cookie
-        cookies.set('auth', res.data.token, {path: '/'});
+        // secure: only ever sent over HTTPS, so the token cannot leak over a
+        // plaintext connection. sameSite: not attached to cross-site requests,
+        // which is what stops another origin from riding this session.
+        cookies.set('auth', res.data.token, {path: '/', secure: true, sameSite: 'strict'});
         if(res.data.type=="Admin"){
           this.props.history.push("/admin");
           return  <Redirect  to="/admin/"/>

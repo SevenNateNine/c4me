@@ -1,2 +1,14 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Shell scripts must keep LF endings in the working tree. A .sh checked out
+# with CRLF fails on Linux and macOS with "bad interpreter: /bin/sh^M".
+*.sh text eol=lf
+
+# SQL is piped to the mysql client; keep it LF for the same reason.
+*.sql text eol=lf
+
+# Key material and certificates are not text and must never be normalized.
+*.key -text
+*.cert -text
+*.pem -text

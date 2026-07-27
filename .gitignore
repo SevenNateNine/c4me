@@ -1,3 +1,37 @@
-c4me/node_modules/
+node_modules/
 backend/node_modules/
+scrape/node_modules/
+
+# Local configuration — contains database credentials, the JWT signing secret
+# and the API keys. Copy backend/config.example.json to backend/config.json.
 backend/config.json
+config.json
+
+# TLS key material. Never commit these; generate them with ssl/generate-cert.sh.
+*.key
+*.pem
+*.p12
+*.pfx
+ssl/server.cert
+
+# Upload scratch space used by express-fileupload
+backend/tmp/
+backend/media/
+
+# Scraper output
+backend/CollegeScoreCard.csv
+
+# Frontend build environment. Copy .env.example to .env.local.
+.env
+.env.local
+.env.*.local
+
+# Build output
+build/
+dist/
+
+# Editor and OS noise
+.DS_Store
+.idea/
+*.iml
+*.swp

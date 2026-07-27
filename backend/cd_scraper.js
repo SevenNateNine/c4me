@@ -1,8 +1,11 @@
 const puppeteer=require('puppeteer');
 let fs = require('fs');
+let path = require('path');
 
-const config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
-const colleges = fs.readFileSync('colleges.txt', 'utf8')
+// Resolved against this file, not the process working directory, so the module
+// loads the same way regardless of where node was started from.
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
+const colleges = fs.readFileSync(path.join(__dirname, 'colleges.txt'), 'utf8')
 
 // "collegedatasite": "http://allv22.all.cs.stonybrook.edu/~stoller/cse416/collegedata/"
 // "collegedatasite": "https://www.collegedata.com/college/"
@@ -10,11 +13,22 @@ const colleges = fs.readFileSync('colleges.txt', 'utf8')
 
 async function scrape(){
   const browser = await puppeteer.launch({headless: true}); //debugging purposes - shouldn't be false in practice
+  // Guarantees the browser is torn down even if a page fails to load partway
+  // through the college list; otherwise each failure leaks a Chrome process.
+  try {
+    return await scrapeAll(browser);
+  } finally {
+    await browser.close();
+  }
+}
+
+async function scrapeAll(browser){
   const page = await browser.newPage();
 
   let dataArray = []
+  let url;
   let collegeList = colleges.replace(/\r/g,'').split('\n')
-  for(i = 0; i < collegeList.length-1; i++){
+  for(let i = 0; i < collegeList.length-1; i++){
     var currentCollege = collegeList[i]
     var searchedCollege = currentCollege
     let collegeNameArray = [];
@@ -273,7 +287,6 @@ async function scrape(){
     }
   }
 
-  await browser.close(); //comment this back in when fully working or your resources will be drained
   return dataArray;
 }
 

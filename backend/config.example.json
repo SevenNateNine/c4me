@@ -1,0 +1,19 @@
+{
+  "_comment": "Copy this file to config.json and fill in real values. config.json is gitignored and must never be committed.",
+
+  "host": "localhost",
+  "user": "c4me",
+  "pass": "CHANGE_ME_database_password",
+  "db": "c4me",
+
+  "sslPort": 9001,
+
+  "_secret": "JWT signing key. Must be at least 32 characters of random data. Generate with: node -e \"console.log(require('crypto').randomBytes(48).toString('base64url'))\"",
+  "secret": "CHANGE_ME_generate_a_random_48_byte_secret",
+
+  "_keys": "Shared API keys the frontend sends as the x-key header. This is a deployment gate that keeps stray clients off the API — it is NOT an authentication control, because any value shipped to a browser bundle is readable by its users. Real authorization comes from the JWT.",
+  "keys": ["CHANGE_ME_generate_a_random_key"],
+
+  "_allowedOrigins": "Exact origins permitted to make cross-origin calls to this API.",
+  "allowedOrigins": ["https://localhost:3000"]
+}
