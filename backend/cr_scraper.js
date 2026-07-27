@@ -1,13 +1,24 @@
 let puppeteer = require('puppeteer');
 let fs = require('fs');
+let path = require('path');
 
-const config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
-const colleges = fs.readFileSync('colleges.txt', 'utf8')
+// Resolved against this file, not the process working directory.
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
+const colleges = fs.readFileSync(path.join(__dirname, 'colleges.txt'), 'utf8')
 
 async function scrape(){
   const browser = await puppeteer.launch({headless: true}); //debugging purposes - shouldn't be false in practice
+  // Ensures the browser is closed even when the page fails to load.
+  try {
+    return await scrapeRankings(browser);
+  } finally {
+    await browser.close();
+  }
+}
+
+async function scrapeRankings(browser){
   const page = await browser.newPage();
-  url = config.collegeranksite;
+  const url = config.collegeranksite;
 
   await page.goto(url,{
     waitLoad: true,
@@ -18,7 +29,7 @@ async function scrape(){
     var row = await document.querySelectorAll('[role=row]');
     let result = [];
     
-    for(i=1; i<row.length;i++){ 
+    for(let i=1; i<row.length;i++){
       let rowObj = {}
       var strRow = row[i].innerText.split(/[\n\t]/)
       rowObj.rank = parseInt(strRow[0].replace(/\D/g,''));
@@ -32,8 +43,6 @@ async function scrape(){
     
     return result
   });
-  await browser.close(); //comment this back in when fully working or your resources will be drained
-  
   let resData = []
   let collegeArray = colleges.replace(/\r/g,'').split('\n')
   data.forEach(function(element){

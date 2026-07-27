@@ -1,57 +1,75 @@
+// One-off loader for applications.csv. The same work is available at runtime
+// through the admin route POST /importApplicationData, which is the supported
+// path; this script exists for bulk seeding without a running server.
+//
+//   node insertApplications.js
+
 let fs = require('fs');
-let mysql = require('mysql');
-let parse = require('csv-parse/lib/sync');
+let path = require('path');
+let mysql = require('mysql2');
+let parse = require('csv-parse/sync').parse;
 
-const config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
-const DB_HOST = config.host || 'localhost';
-const DB_USER = config.user || 'root';  
-const DB_PASS = config.pass || ''; 
-const DB_NAME = config.db || 'c4me';
-
-const pool = mysql.createPool({
-  connectionLimit : 100,
-  host: DB_HOST,
-  user: DB_USER,
-  password: DB_PASS,
-  database: DB_NAME,
-});
-
-function databaseRequest(query, func) {
-pool.getConnection((err, connection) => {
-  if (err) {
-    func(err, null);
-  }
-  connection.query(query, (err, rows) => {
-    func(err, rows)
-    connection.release();
-  });
-}); 
+let config;
+try {
+  config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
+} catch (e) {
+  console.error('c4me: cannot read backend/config.json. Copy backend/config.example.json and fill it in.');
+  process.exit(1);
 }
 
-let fileData = fs.readFileSync('applications.csv');
-let applications = parse(fileData, {columns: true, skip_empty_lines: true});
-let i = 0
-for (i = 0; i < applications.length; i++) {
-  let row = applications[i];
-  let status = "";
-  let questionable = false;
-  if (row.status === 'wait-listed') {
-    status = 'Waitlisted';
-  } else if (row.status === 'pending') {
-    status = 'Pending';
-  } else if (row.status === 'accepted') {
-    status = 'Accepted';
-    questionable = Math.random() > 60 ? true : false; 
-  } else if (row.status === 'denied') {
-    status = 'Rejected';
-  } else if (row.status === 'deferred') {
-    status = 'Deferred';
-  }
+const pool = mysql.createPool({
+  connectionLimit: 10,
+  host: config.host || 'localhost',
+  user: config.user || 'root',
+  password: config.pass || '',
+  database: config.db || 'c4me',
+});
 
-  databaseRequest(`INSERT INTO Applications (student_id, college_id, questionable, status) SELECT 
-  User.id, School.id, ${questionable}, ${mysql.escape(status)} FROM User, School WHERE 
-  User.user_name = ${mysql.escape(row.userid)} AND School.name LIKE ${mysql.escape(row.college)}`, (err, rows) => {
-    if (err) console.log(err);
-    return;
+function databaseRequest(query, values, func) {
+  pool.getConnection((err, connection) => {
+    if (err) {
+      func(err, null);
+      return;
+    }
+    connection.query(query, values, (queryErr, rows) => {
+      func(queryErr, rows);
+      connection.release();
+    });
+  });
+}
+
+const STATUS_MAP = {
+  'wait-listed': 'Waitlisted',
+  'pending': 'Pending',
+  'accepted': 'Accepted',
+  'denied': 'Rejected',
+  'deferred': 'Deferred'
+};
+
+const applications = parse(fs.readFileSync(path.join(__dirname, 'applications.csv')),
+  {columns: true, skip_empty_lines: true});
+
+let pending = applications.length;
+if (pending === 0) {
+  pool.end();
+}
+
+for (let i = 0; i < applications.length; i++) {
+  const row = applications[i];
+  const status = STATUS_MAP[row.status] || '';
+
+  // CSV cells are bound as parameters. The `questionable` column is left at its
+  // default and computed by the application's own flagging logic — the original
+  // seeded it from `Math.random() > 60`, which is never true.
+  const query = `INSERT INTO Applications (student_id, college_id, status)
+    SELECT User.id, School.id, ?
+    FROM User, School
+    WHERE User.user_name = ? AND School.name LIKE ?`;
+
+  databaseRequest(query, [status, row.userid, row.college], (err) => {
+    if (err) console.error(`row ${i}:`, err.code);
+    if (--pending === 0) {
+      pool.end();
+    }
   });
 }
